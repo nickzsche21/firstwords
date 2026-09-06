@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #08090b;
+  --panel: #0e1014;
+  --line: #1e222a;
+  --ink: #e8eaed;
+  --muted: #7c8595;
+  --accent: #7dd3a0;
+  --warn: #e8b768;
+  --hot: #e87d7d;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* The babble panel. Fresh output fades in so the stream reads as arriving
+   rather than snapping between frames. */
+@keyframes arrive {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+.arrive {
+  animation: arrive 320ms ease-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret::after {
+  content: "▋";
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+textarea,
+input {
+  font-family: inherit;
+}
+
+textarea::placeholder {
+  color: #4a515e;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrive,
+  .pulse,
+  .caret::after {
+    animation: none;
+  }
+}
