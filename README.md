@@ -1,5 +1,7 @@
 # FIRST WORDS
 
+### → [firstwords-app.vercel.app](https://firstwords-app.vercel.app)
+
 Paste any text. A neural network is **born in your browser tab** and raised on
 it, live, while you watch.
 
